@@ -1,9 +1,9 @@
 interface ICalculatorData{
-	basic : number,
-	hra : number,
-	da : number,
-	tax : number,
-	salary : number
+	basic : number;
+	hra : number;
+	da : number;
+	tax : number;
+	salary : number;
 };
 
 interface ICallbackFn{
@@ -55,3 +55,8 @@ calc.set('hra', 5000);
 calc.set('tax', 10);
 calc.calculate();
 console.log(calc.get('salary'));
+
+let numbers : Array<number> = [];
+
+numbers.push(';safdadsfa');
+

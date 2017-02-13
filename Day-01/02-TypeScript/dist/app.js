@@ -52,3 +52,5 @@ calc.set('hra', 5000);
 calc.set('tax', 10);
 calc.calculate();
 console.log(calc.get('salary'));
+var numbers = [];
+numbers.push(';safdadsfa');
