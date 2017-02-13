@@ -6,7 +6,24 @@ interface ICalculatorData{
 	salary : number
 };
 
-class SalaryCalculator{
+interface ICallbackFn{
+	function()
+}
+
+class Events{
+	_eventHandlers = {};
+
+	onChange(attrName : string, listenerFn : Function){
+		this._eventHandlers[attrName] = this._eventHandlers[attrName] || [];
+		this._eventHandlers[attrName].push(listenerFn);
+	}
+	triggerChange(attrName : string){
+		let listenerFns = this._eventHandlers[attrName] || [];
+		listenerFns.forEach(listenerFn => listenerFn());
+	}
+}
+
+class SalaryCalculator extends Events{
 	_data : ICalculatorData = {
 		basic : 0,
 		hra : 0,
@@ -20,7 +37,9 @@ class SalaryCalculator{
 	}
 
 	set(attrName : string, value : any){
+		if (this._data[attrName] === value) return;
 		this._data[attrName] = value;
+		this.triggerChange(attrName);
 	}
 
 	calculate() : void{
