@@ -4,24 +4,22 @@ import { Calculator } from '../models/Calculator';
 @Component({
 	selector  : 'calculator',
 	template : `
-		<input type="text" #txtNumber1 />
-		<input type="text" #txtNumber2 />
+		<input type="number" [(ngModel)]="calculator.number1" />
+		<input type="number" [(ngModel)]="calculator.number2" />
 		<select #selectOperator>
 			<option value="add">Add</option>
 			<option value="subtract">Subtract</option>
 			<option value="multiply">Multiply</option>
 			<option value="divide">Divide</option>
 		</select>
-		<input type="button" value="Calculate" (click)="triggerCalculate(txtNumber1, txtNumber2, selectOperator)" />
+		<input type="button" value="Calculate" (click)="triggerCalculate(selectOperator)" />
 		<div>{{calculator.result}}</div>
 	`
 })
 export class CalculatorComponent{
 	calculator : Calculator = new Calculator();
 
-	triggerCalculate(txtNumber1, txtNumber2, selectOperator){
-		this.calculator.number1 = parseInt(txtNumber1.value,10);
-		this.calculator.number2 = parseInt(txtNumber2.value, 10);
+	triggerCalculate(selectOperator){
 		this.calculator[selectOperator.value]();
 	}
 }

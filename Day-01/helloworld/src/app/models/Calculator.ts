@@ -1,6 +1,6 @@
 export class Calculator{
-	number1 : number;
-	number2 : number;
+	number1 : number = 100;
+	number2 : number = 200;
 	result : number;
 
 	add() : void {
