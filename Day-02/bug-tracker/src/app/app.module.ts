@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bug-tracker.component';
 import { BugStatsComponent } from './bug-tracker/bug-stats/bug-stats.component';
 
+import { TrimTextPipe } from './pipes/trimText.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     BugTrackerComponent,
-    BugStatsComponent
+    BugStatsComponent,
+    TrimTextPipe
   ],
   imports: [
     BrowserModule,
