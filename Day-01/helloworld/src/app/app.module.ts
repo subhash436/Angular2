@@ -8,11 +8,13 @@ import { GreetComponent } from './greet/greet.component';
 import { CalculatorComponent } from './calculator/Calculator.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     GreetComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    
   ],
   imports: [
     BrowserModule,
