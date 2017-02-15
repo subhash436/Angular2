@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBug } from '../models/IBug';
 import { BugStorage } from '../services/BugStorage.service';
 
+
 @Component({
   selector: 'bug-tracker',
   templateUrl: './bug-tracker.component.html',

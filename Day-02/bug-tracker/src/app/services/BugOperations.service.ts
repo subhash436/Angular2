@@ -5,14 +5,16 @@ export class BugOperations{
 		return {
 			id : id,
 			name : name,
-			isClosed : false
+			isClosed : false,
+			createdAt : new Date()
 		}
 	}
 	toggle(bug : IBug) : IBug {
 		return {
 			id : bug.id,
 			name : bug.name,
-			isClosed : !bug.isClosed
+			isClosed : !bug.isClosed,
+			createdAt : bug.createdAt
 		}
 	}
 }
