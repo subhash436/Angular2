@@ -20,7 +20,13 @@ export class BugTrackerComponent {
   	}
 
   	toggle(bug : IBug){
-  		bug.isClosed = !bug.isClosed;
+  		//bug.isClosed = !bug.isClosed;
+      this.bugs = this.bugs.map(function(b){
+        if (b === bug){
+          b.isClosed = !b.isClosed;
+        }
+        return b;
+      });
   	}
 
   	removeClosed(){

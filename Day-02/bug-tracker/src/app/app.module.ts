@@ -9,14 +9,15 @@ import { BugStatsComponent } from './bug-tracker/bug-stats/bug-stats.component';
 
 import { TrimTextPipe } from './pipes/trimText.pipe';
 import { SortPipe } from './pipes/sort.pipe';
-
+import { ClosedCountPipe } from './pipes/ClosedCount.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     BugTrackerComponent,
     BugStatsComponent,
     TrimTextPipe,
-    SortPipe
+    SortPipe,
+    ClosedCountPipe
   ],
   imports: [
     BrowserModule,

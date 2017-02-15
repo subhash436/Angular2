@@ -6,8 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortPipe implements PipeTransform{
 	transform(data : Array<any> = [], sortBy : string, isDescending : boolean = false ) : Array<any>{
-		console.log('sorting by ', sortBy);
-		/*console.table(data);*/
 		if (!sortBy) return data;
 		let comparerFn = getComparerFor(sortBy);
 		if (isDescending)
