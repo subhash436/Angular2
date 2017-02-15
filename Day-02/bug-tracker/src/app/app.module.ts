@@ -8,13 +8,15 @@ import { BugTrackerComponent } from './bug-tracker/bug-tracker.component';
 import { BugStatsComponent } from './bug-tracker/bug-stats/bug-stats.component';
 
 import { TrimTextPipe } from './pipes/trimText.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BugTrackerComponent,
     BugStatsComponent,
-    TrimTextPipe
+    TrimTextPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
