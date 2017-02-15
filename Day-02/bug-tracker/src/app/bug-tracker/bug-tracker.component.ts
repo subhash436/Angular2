@@ -30,9 +30,7 @@ export class BugTrackerComponent {
   	}
 
   	removeClosed(){
-  		for(let i = this.bugs.length-1; i >=0;i--)
-  			if (this.bugs[i].isClosed)
-  				this.bugs.splice(i,1);
+  		this.bugs = this.bugs.filter(b => !b.isClosed);
   	}
 	
 	
