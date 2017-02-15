@@ -1,9 +1,15 @@
 import { IBug } from '../models/IBug';
+import { BugOperations } from './BugOperations.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class BugStorage{
 	private _storage : any = window.localStorage;
 	private _currentBugId = -1;
 
+	constructor(private _bugOperations : BugOperations){
+
+	}
 	getAll() : Array<IBug> {
 		let result = [];
 		for(let i = 0; i < this._storage.length; i++){
@@ -15,11 +21,7 @@ export class BugStorage{
 		return result;
 	}
 	addNew(bugName : string) :  IBug {
-		let newBug = {
-			id : ++this._currentBugId,
-			name : bugName,
-			isClosed : false
-		};
+		let newBug = this._bugOperations.createNew(++this._currentBugId, bugName);
 		this.saveBug(newBug);
 		return newBug;
 	}
@@ -30,11 +32,7 @@ export class BugStorage{
 		this._storage.removeItem(bug.id.toString());
 	}
 	toggle(bug : IBug) : IBug{
-		var toggledBug = {
-			id : bug.id,
-			name : bug.name,
-			isClosed : !bug.isClosed
-		};
+		var toggledBug = this._bugOperations.toggle(bug);
 		this.saveBug(toggledBug);
 		return toggledBug;
 	}
