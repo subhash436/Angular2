@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBug } from '../models/IBug';
 import { BugStorage } from '../services/BugStorage.service';
 
+declare var fetch;
 
 @Component({
   selector: 'bug-tracker',
@@ -19,12 +20,39 @@ export class BugTrackerComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.bugs = this._bugStorage.getAll();
+    //this.bugs = this._bugStorage.getAll();
+    this.bugs = [];
+
+    fetch('http://localhost:3000/bugs')
+      .then(response => response.json())
+      .then(bugs => {
+         this.bugs = bugs;
+      });
+
   }
 
   	addNew(bugName : string){
-  		let newBug = this._bugStorage.addNew(bugName);
-  		this.bugs = this.bugs.concat([newBug])
+  		/*let newBug = this._bugStorage.addNew(bugName);
+  		this.bugs = this.bugs.concat([newBug])*/
+
+      var newBugData = {
+        id : 0,
+        name : bugName,
+        isClosed : false,
+        createdAt : new Date()
+      };
+
+      return fetch('http://localhost:3000/bugs', {
+            headers : {
+                'content-type' :'application/json'
+            },
+            method : 'POST',
+            body : JSON.stringify(newBugData)
+        })
+        .then((response : any) => response.json())
+        .then(newBug => {
+          this.bugs = this.bugs.concat([newBug]);
+        });
   	}
 
   	toggle(bug : IBug){
