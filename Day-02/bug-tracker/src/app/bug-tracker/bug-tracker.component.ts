@@ -28,6 +28,7 @@ export class BugTrackerComponent implements OnInit{
       .then(bugs => {
          this.bugs = bugs;
       });
+    
 
   }
 
