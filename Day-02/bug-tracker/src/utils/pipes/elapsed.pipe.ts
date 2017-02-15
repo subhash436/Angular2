@@ -10,3 +10,4 @@ export class ElapsedPipe implements PipeTransform{
 		return moment(data).fromNow();
 	}
 }
+
